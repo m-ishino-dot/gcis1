@@ -443,9 +443,10 @@
                         <p class="text-xs text-slate-400">6枚から「自分の選ぶ1枚」を決め、その絵を表すタイトル（お題コトバ）を入力してください。</p>
                     </div>
 
+                    <!-- 縦長表示 (3:4比率) に変更 -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                         ${generatedCards.map((fileName, idx) => `
-                            <div onclick="selectParentCard(${idx})" id="card-option-${idx}" class="aspect-square bg-slate-50 border-2 border-slate-100 rounded-xl overflow-hidden cursor-pointer hover:border-slate-300 transition-all shadow-sm flex items-center justify-center">
+                            <div onclick="selectParentCard(${idx})" id="card-option-${idx}" class="aspect-[3/4] bg-white border-2 border-slate-150 rounded-2xl overflow-hidden cursor-pointer hover:border-slate-300 transition-all shadow-sm flex items-center justify-center p-1">
                                 ${renderPresetSVG(fileName)}
                             </div>
                         `).join('')}
@@ -535,10 +536,10 @@
                         <p class="text-xs text-slate-400">親が上の言葉をつけて選んだカードは、以下のどれだと思いますか？</p>
                     </div>
 
-                    <!-- 6枚 of Cards -->
+                    <!-- 6枚 of Cards (3:4比率) -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                         ${generatedCards.map((fileName, idx) => `
-                            <div onclick="selectChildVote(${idx})" id="vote-card-option-${idx}" class="aspect-square bg-slate-50 border-2 border-slate-100 rounded-xl overflow-hidden cursor-pointer hover:border-slate-300 transition-all shadow-sm flex items-center justify-center">
+                            <div onclick="selectChildVote(${idx})" id="vote-card-option-${idx}" class="aspect-[3/4] bg-white border-2 border-slate-150 rounded-2xl overflow-hidden cursor-pointer hover:border-slate-300 transition-all shadow-sm flex items-center justify-center p-1">
                                 ${renderPresetSVG(fileName)}
                             </div>
                         `).join('')}
@@ -659,12 +660,13 @@
                         <p class="text-xs text-slate-500">親のタイトル: <span class="font-bold text-indigo-600 text-sm">「${parentTitle}」</span></p>
                     </div>
 
-                    <div class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200/60 rounded-2xl p-4 max-w-sm mx-auto">
+                    <!-- 縦長大型カード表示に変更 -->
+                    <div class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200/60 rounded-3xl p-4 max-w-xs mx-auto">
                         <p class="text-xs font-bold text-emerald-700 mb-2 flex items-center gap-1">
                             <i data-lucide="check-circle" class="w-4 h-4"></i>
-                            <span>親（${storytellerName}）が選んだ正解 of the 絵</span>
+                            <span>親（${storytellerName}）が選んだ正解の絵</span>
                         </p>
-                        <div class="w-44 h-44 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-inner flex items-center justify-center">
+                        <div class="w-48 h-64 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center p-1.5">
                             ${renderPresetSVG(generatedCards[parentSelectedIndex])}
                         </div>
                     </div>
@@ -781,14 +783,14 @@
 
         // ==========================================
         // GitHub内の同一フォルダにある画像を表示する関数
-        // （エラー発生時、拡張子の大文字小文字やフォルダ構造を自動でテスト・解決します）
+        // （object-containとbg-whiteを当てることで、見切れを完全に防ぎます）
         // ==========================================
         function renderPresetSVG(fileName) {
             const cleanName = fileName.substring(0, fileName.lastIndexOf('.'));
             return `
-                <div class="relative w-full h-full flex items-center justify-center bg-slate-100 rounded-xl">
+                <div class="relative w-full h-full flex items-center justify-center bg-white rounded-xl">
                     <img src="./${fileName}" 
-                         class="w-full h-full object-cover rounded-xl border border-slate-200" 
+                         class="w-full h-full object-contain rounded-xl" 
                          alt="お題イラスト" 
                          data-basename="${cleanName}"
                          data-retry="0"
@@ -798,15 +800,14 @@
         }
 
         // ==========================================
-        // 超強力エラーフォールバックエンジン
-        // 1. ルート直下 ➔ 2. 拡張子大文字小文字（.JPG等）
-        // .github/workflowsは一般非公開フォルダのため、ルート直下に移動された画像を綺麗に取得します。
+        // 超強力エラーフォールバックエンジン (バックグラウンド動作)
+        // 大文字の.JPGや.PNGなどの拡張子のズレを裏で全自動で解消します。
         // ==========================================
         window.handleImageError = function(img) {
             const retryCount = parseInt(img.getAttribute('data-retry') || '0', 10);
             const baseName = img.getAttribute('data-basename');
 
-            // ルート直下、および代表的な拡張子へのアクセス総当たり
+            // ルート直下、および代表的な拡張子へのアクセス
             const paths = [
                 `./${baseName}.jpg`,
                 `./${baseName}.JPG`,
@@ -825,7 +826,7 @@
                 img.onerror = null;
                 img.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400";
                 
-                const cardFrame = img.closest('.aspect-square');
+                const cardFrame = img.closest('.aspect-[3/4]');
                 if (cardFrame) {
                     cardFrame.classList.add('border-rose-400', 'border-4');
                 }
