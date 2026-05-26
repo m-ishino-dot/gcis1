@@ -146,6 +146,15 @@
             <!-- 動的に差し替えられる、お題決め / 推理バトンリレーのコンテナ -->
             <div id="game-active-panel" class="bg-white border border-slate-100 shadow-xl rounded-3xl p-6 md:p-8 min-h-[450px] flex flex-col justify-between">
             </div>
+
+            <!-- デバッグログ表示エリア（トラブル解決用） -->
+            <div id="debug-log-panel" class="bg-slate-900 text-rose-400 text-[10px] font-mono p-4 rounded-2xl border border-slate-800 max-h-[150px] overflow-y-auto shadow-inner hidden">
+                <div class="text-slate-400 font-bold border-b border-slate-800 pb-1 mb-1 flex justify-between items-center">
+                    <span>⚠️ システムデバッグログ (画像エラー検出中)</span>
+                    <button onclick="document.getElementById('debug-log-panel').classList.add('hidden')" class="text-slate-500 hover:text-slate-300">閉じる</button>
+                </div>
+                <div id="debug-log-content"></div>
+            </div>
         </section>
 
         <!-- =================== 【画面4】結果画面 =================== -->
@@ -354,6 +363,10 @@
 
             currentLap = 1;
             storytellerIndex = 0;
+
+            // デバッグログをクリアしてリセット
+            document.getElementById('debug-log-content').innerHTML = "";
+            document.getElementById('debug-log-panel').classList.add('hidden');
 
             startRound();
             goToScreen('game');
@@ -781,12 +794,12 @@
 
         // ==========================================
         // GitHub内の同一フォルダにある画像を表示する関数
-        // （エラー発生時、拡張子の大文字小文字を全自動でテスト・解決します）
+        // （エラー発生時、拡張子の大文字小文字やフォルダ構造を自動でテスト・解決します）
         // ==========================================
         function renderPresetSVG(fileName) {
             const cleanName = fileName.substring(0, fileName.lastIndexOf('.'));
             return `
-                <div class="relative w-full h-full">
+                <div class="relative w-full h-full flex items-center justify-center bg-slate-100 rounded-xl">
                     <img src="./${fileName}" 
                          class="w-full h-full object-cover rounded-xl border border-slate-200" 
                          alt="お題イラスト" 
@@ -798,38 +811,81 @@
         }
 
         // ==========================================
-        // エラー自動フォールバックエンジン
-        // スマホ撮影による大文字拡張子（.JPG, .PNG）や
-        // 各種画像形式を総当たりで解決します
+        // 超強力エラーフォールバック＆自動ログ記録エンジン
+        // 1. ルート直下 ➔ 2. サブフォルダ ➔ 3. 拡張子大文字小文字
+        // あらゆるパターンを総当たりで解決し、エラーならデバッグログに出力します。
         // ==========================================
         window.handleImageError = function(img) {
             const retryCount = parseInt(img.getAttribute('data-retry') || '0', 10);
             const baseName = img.getAttribute('data-basename');
-            
-            // アップロードされる可能性の高い、大文字小文字の拡張子リスト
-            const fallbacks = [
-                '.JPG',   // 大文字JPG（iPhone撮影で最も多い形式）
-                '.png',   // 小文字PNG
-                '.PNG',   // 大文字PNG
-                '.jpeg',  // 小文字JPEG
-                '.JPEG',  // 大文字JPEG
-                '.jpg'    // 小文字jpgへの再アクセス
+            const originalSrc = img.src;
+
+            // アップロード時によくあるフォルダ構成と拡張子の組み合わせ
+            const paths = [
+                // 1. ルート直下
+                `./${baseName}.jpg`,
+                `./${baseName}.JPG`,
+                `./${baseName}.png`,
+                `./${baseName}.PNG`,
+                `./${baseName}.jpeg`,
+                `./${baseName}.JPEG`,
+
+                // 2. アップロードされがちなサブフォルダ名 (dixit/, images/, GoogleDrive/)
+                `./dixit/${baseName}.jpg`,
+                `./dixit/${baseName}.JPG`,
+                `./images/${baseName}.jpg`,
+                `./images/${baseName}.JPG`,
+                `./dixit_cards/${baseName}.jpg`,
+                `./dixit_cards/${baseName}.JPG`,
+
+                // 3. ゼロ埋めなしの可能性のテスト (例: dixit_0001 ➔ dixit_1)
+                `./${shortenName(baseName)}.jpg`,
+                `./${shortenName(baseName)}.JPG`,
+                `./dixit/${shortenName(baseName)}.jpg`,
+                `./dixit/${shortenName(baseName)}.JPG`
             ];
 
-            if (retryCount < fallbacks.length) {
-                const nextExt = fallbacks[retryCount];
+            // デバッグログ表示用パネルの起動
+            document.getElementById('debug-log-panel').classList.remove('hidden');
+
+            if (retryCount < paths.length) {
+                const nextSrc = paths[retryCount];
+                logDebug(`🔄 [読み込み再試行 ${retryCount + 1}/${paths.length}]: "${baseName}" の取得に失敗したため、パスを "${nextSrc}" に変更してリトライします。`);
                 img.setAttribute('data-retry', retryCount + 1);
-                img.src = `./${baseName}${nextExt}`;
+                img.src = nextSrc;
             } else {
-                // すべて失敗した場合のみ、Unsplashの代替抽象アートに切り替え
+                // すべて失敗した場合
+                logDebug(`❌ [完全エラー]: "${baseName}" は、リストされた全てのパスで見つかりませんでした。お手数ですが、画像ファイルが正しくルート直下に置かれているか、GitHubのフォルダ構造を確認してください。`);
                 img.onerror = null;
-                img.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400";
+                img.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400"; // 代替抽象アート
                 
-                // エラー警告枠の付与（開発・デバッグ用）
-                const parent = img.closest('.aspect-square');
-                if (parent) {
-                    parent.classList.add('border-rose-300');
+                // 親のカード枠を赤くして知らせる
+                const cardFrame = img.closest('.aspect-square');
+                if (cardFrame) {
+                    cardFrame.classList.add('border-rose-400', 'border-4');
                 }
+            }
+        };
+
+        // dixit_0001 ➔ dixit_1 に変換する補助関数
+        function shortenName(name) {
+            const parts = name.split('_');
+            if (parts.length >= 2) {
+                const num = parseInt(parts[1], 10);
+                if (!isNaN(num)) {
+                    return `${parts[0]}_${num}`;
+                }
+            }
+            return name;
+        }
+
+        // 画面のデバッグパネルにログを出力する関数
+        function logDebug(message) {
+            const content = document.getElementById('debug-log-content');
+            if (content) {
+                const time = new Date().toLocaleTimeString();
+                content.innerHTML += `<div class="mb-1"><span class="text-slate-500">[${time}]</span> ${message}</div>`;
+                content.scrollTop = content.scrollHeight; // 自動スクロール
             }
         }
     </script>
