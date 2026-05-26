@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コトバ・パレット 〜視点のちがい発見ゲーム〜</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
@@ -31,7 +28,6 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between text-slate-800">
 
-    <!-- ヘッダー -->
     <header class="bg-white border-b border-slate-100 py-4 px-6 shadow-sm sticky top-0 z-50">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -43,7 +39,6 @@
                     <p class="text-[10px] text-slate-400 font-bold tracking-wider">PALETTE OF PERSPECTIVES</p>
                 </div>
             </div>
-            <!-- ルール表示 -->
             <div class="flex items-center space-x-2">
                 <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
                     <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-600"></i>
@@ -57,10 +52,8 @@
         </div>
     </header>
 
-    <!-- メインコンテンツ -->
     <main class="max-w-5xl w-full mx-auto p-4 md:p-6 flex-grow flex flex-col justify-center">
 
-        <!-- =================== 【画面1】スタート・説明画面 =================== -->
         <section id="screen-start" class="animate-pop bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-12 text-center max-w-2xl mx-auto">
             <span class="text-xs font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1 rounded-full">
                 多様性理解・1台プレイ特化ゲーム
@@ -73,7 +66,7 @@
                 <ul class="space-y-2 text-xs md:text-sm">
                     <li class="flex items-start gap-2">
                         <span class="bg-indigo-100 text-indigo-700 w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-xs">1</span>
-                        <span><strong>親（お題出し）の役割：</strong> 6枚の絵（Google Driveの専用フォルダからランダムに選ばれます）から1枚選び、他のみんなにバレないような「タイトル（コトバ）」をつけます。</span>
+                        <span><strong>親（お題出し）の役割：</strong> 6枚の絵（GitHubにアップされた46枚の絵からランダムに選ばれます）から1枚選び、他のみんなにバレないような「タイトル（コトバ）」をつけます。</span>
                     </li>
                     <li class="flex items-start gap-2">
                         <span class="bg-indigo-100 text-indigo-700 w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-xs">2</span>
@@ -99,7 +92,6 @@
             </div>
         </section>
 
-        <!-- =================== 【画面2】メンバー名登録画面 =================== -->
         <section id="screen-setup" class="hidden animate-pop bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-8 max-w-md mx-auto w-full">
             <h3 class="text-xl font-bold text-slate-900 mb-2 flex items-center space-x-2">
                 <i data-lucide="user-plus" class="text-indigo-600"></i>
@@ -126,9 +118,7 @@
             </div>
         </section>
 
-        <!-- =================== 【画面3】メインゲーム画面 =================== -->
         <section id="screen-game" class="hidden animate-pop flex flex-col space-y-6">
-            <!-- ゲーム進行ステータスバー -->
             <div class="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm flex flex-col sm:flex-row justify-between items-center gap-2">
                 <div class="flex items-center space-x-3">
                     <span id="current-round-badge" class="text-xs font-bold bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">
@@ -138,19 +128,15 @@
                         親：あきら さんの番
                     </span>
                 </div>
-                <!-- 各自の現在のスコア表示 -->
                 <div class="flex flex-wrap justify-center gap-2" id="scores-mini-display">
                 </div>
             </div>
 
-            <!-- 動的に差し替えられる、お題決め / 推理バトンリレーのコンテナ -->
             <div id="game-active-panel" class="bg-white border border-slate-100 shadow-xl rounded-3xl p-6 md:p-8 min-h-[450px] flex flex-col justify-between">
             </div>
         </section>
 
-        <!-- =================== 【画面4】結果画面 =================== -->
         <section id="screen-result" class="hidden animate-pop space-y-6">
-            <!-- 上部サマリーカード -->
             <div class="bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-xl text-center md:text-left">
                 <span class="text-xs font-bold bg-indigo-500/30 text-indigo-200 px-3 py-1 rounded-full">
                     ゲーム終了！
@@ -161,7 +147,6 @@
                 </p>
             </div>
 
-            <!-- ランキングリスト -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div class="lg:col-span-8 space-y-4">
                     <h3 class="text-lg font-bold text-slate-900 px-1 flex items-center space-x-2">
@@ -172,7 +157,6 @@
                     </div>
                 </div>
 
-                <!-- 多様性理解への問いかけ -->
                 <div class="lg:col-span-4 space-y-6">
                     <div class="bg-amber-50 border border-amber-100 rounded-3xl p-6 shadow-sm">
                         <h4 class="font-black text-amber-900 text-sm flex items-center space-x-1.5 mb-3">
@@ -201,7 +185,6 @@
                 </div>
             </div>
 
-            <!-- アクションエリア -->
             <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-center items-center gap-3">
                 <button onclick="goToScreen('start')" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center space-x-1.5">
                     <i data-lucide="home" class="w-4 h-4"></i>
@@ -216,67 +199,21 @@
 
     </main>
 
-    <!-- フッター -->
     <footer class="bg-white border-t border-slate-100 py-4 px-6 text-center text-xs text-slate-400 mt-8">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
             <p>コトバ・パレット © 2026 — ディクシット再現・多様性理解ワークツール（1台プレイ完全ローカル版）</p>
         </div>
     </footer>
 
-    <!-- JavaScript ロジック -->
     <script>
         // ==========================================
-        // 【抽出済み】Google Drive画像ファイルIDリスト (全46枚分)
-        // 先生から送っていただいたURLから自動抽出したIDを配列に格納しています。
+        // 【自動生成】dixit_0001.jpg 〜 dixit_0046.jpg のファイル名を自動で46枚分登録します
         // ==========================================
-        const DRIVE_IMAGE_IDS = [
-            "1jpE5kN02ernJM-cU3lwJxtB7SN3eHjAx",
-            "1aNeO3DFn3L5WHGDmIzIfu-DGN-fJLWft",
-            "19J5Pk0fJtcoxgLXO_Uc2mAHzqT7wPFvV",
-            "1XpZ5QqQFjIL-Axzxuvb4l3cv7Gqq-E-G",
-            "1X8ymwf26rEA7W8NkVGzyk4xsfbq5fJsQ",
-            "1sIA3c3RqPZHoiKgGWbajeY_sOtgspZhf",
-            "1W073SUVAt9nneReKuQfEOStxp2FMzX33",
-            "1qeK6RNgmmZph16xZJ_rQyEDJ4iRTO-jQ",
-            "1xdYFqCyJOF_FvA7dfGLy1GYq6qUzRrlE",
-            "1vVIa_-qdyEd6__cp8pZXnHeL1eG8_Bue",
-            "1o_lkU6Qd9oyxF5oyGMrbrprVqhqINroa",
-            "1oPwy2zvMaCePvOzv9Cf5l_KW9F_knttO",
-            "1kuQu15LzYBzcViDCBCbpF-9dLAE4kMo7",
-            "1cDpf8OGfRdI6w9y2mfQi-E0vO8DHHz39",
-            "1ApaYSFgfZnoJSE7Z1UMYLflN4mokY3L8",
-            "16mTKnoaxkZz3ITP72kYmREDOWZKVtv55",
-            "1647ozuZ1Du5uj9tisjfhBjTBZFwzOq-_",
-            "1mJJTHRPJsv3yAs6dPKQLntt46wl5g4G5",
-            "1oChrwMEVl-f0LeuW3SZAcXizq34tGAlX",
-            "1WFn1-wyY18Ojp-TVEI4jZV1se9kzsL4O",
-            "1XWYVBLuBijb0qIfWx0CK-9Ic-WrNAD4v",
-            "1lks3_WHF8EdfkWL-iSudsojdahxv7JFj",
-            "1niDpJ5KAEwq6GUvuRawzPeSm8ebjlPJh",
-            "1O92FA3kRkn4oD_WarDZME9EhRiNLg65G",
-            "1kUqwNOLUL58Anf7PENObz3AzUUJCjbtF",
-            "1aQbK_i-jtf5gIXaAgRpASv43DWJwymr7",
-            "17XztqSvNTCWdA8Gby2qinz8n-FODF-cf",
-            "1vBj5BefeCdOe2BR2YaDL3RYb15JqZxaX",
-            "136y5xgrnBvAqPBpd7bU5x5y00OB_FKGv",
-            "1JEaz8CJ9FpyKcTia5A8pXQNShwEdDZFW",
-            "1_OBcDjo6_mS5PPcNYeJvGLGzQQfApuIv",
-            "1Kq_fs3yaPkljgo81VKdkraDkpqi3Av1I",
-            "1pJOwb332zybDAkNIqv0keW3KZc47C6b2",
-            "1PzB63F-UbmTOhaslw5Tz3kPXwZy0vCgz",
-            "1ndvOqlEpaUsqfur1_EnD-XyCLqt_hAaf",
-            "1Tu_oSKxAqyfQOeYxeAL3YTaWL76u8W8r",
-            "1Bri4ABxDPiCKYC0khbi7OKvwPWC21XJN",
-            "1qEgPkd0eWivqE3wgVCElRwEE_ZTfHiOH",
-            "1YzHqPKWfPXDzOxxX2R_Eyoc2BhPIMEXZ",
-            "1LlQX-GrI5lkoMJx9ikMq6_x6pHpaPjEj",
-            "1ys5FWwzG2xwXpLq1ejmSj823VkC71k48",
-            "1pQ87oVttLwxgAGE7Ce3xJYD5sHgT2i8Q",
-            "14cgAgXorKDieAlJBLRuKs2iC-UYbDOyu",
-            "1skKImexnIMYyW945-01BUMxm-AgEVEeo",
-            "1-zL6MIiI5zCYN51oOy3jpVCrV50j6rn7",
-            "1odY8Sd93fCDytfLpawzti8FqyOccXW5c"
-        ];
+        const DRIVE_IMAGE_IDS = [];
+        for (let i = 1; i <= 46; i++) {
+            const numStr = String(i).padStart(4, '0');
+            DRIVE_IMAGE_IDS.push(`dixit_${numStr}.jpg`);
+        }
 
         // --- ゲーム状態管理 ---
         let members = ['プレイヤー1', 'プレイヤー2', 'プレイヤー3'];
@@ -287,7 +224,7 @@
         let storytellerIndex = 0; // 現在の親のメンバーインデックス
         
         // 各ラウンド内の一時ステート
-        let generatedCards = []; // そのラウンド用に選ばれた6枚の画像ID
+        let generatedCards = []; // そのラウンド用に選ばれた6枚の画像ファイル名
         let parentSelectedIndex = -1; // 親が選んだ絵のインデックス(0~5)
         let parentTitle = ""; // 親が決めたタイトルお題
         let childVotes = {}; // 子の投票状況 {playerName: cardIndex}
@@ -390,11 +327,6 @@
                 return;
             }
 
-            if (DRIVE_IMAGE_IDS.length < 6) {
-                alert("エラー: 画像が6枚以上登録されていません。");
-                return;
-            }
-
             // 得点表初期化
             scores = {};
             members.forEach(m => {
@@ -429,7 +361,7 @@
             
             updateScoresDisplay();
 
-            // ドライブの画像IDリストから重複なしで6枚ランダムに選出
+            // 画像リストから重複なしで6枚ランダムに選出
             const shuffledPresets = [...DRIVE_IMAGE_IDS].sort(() => 0.5 - Math.random());
             generatedCards = shuffledPresets.slice(0, 6);
 
@@ -489,13 +421,13 @@
                     <div>
                         <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-100">親のフェーズ</span>
                         <h3 class="text-xl font-black text-slate-900 mt-2 mb-1">どの絵にタイトルをつけますか？</h3>
-                        <p class="text-xs text-slate-400">6枚（Google Driveからランダム選出）から「自分の選ぶ1枚」を決め、その絵を表すタイトル（お題コトバ）を入力してください。</p>
+                        <p class="text-xs text-slate-400">6枚から「自分の選ぶ1枚」を決め、その絵を表すタイトル（お題コトバ）を入力してください。</p>
                     </div>
 
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        ${generatedCards.map((id, idx) => `
+                        ${generatedCards.map((fileName, idx) => `
                             <div onclick="selectParentCard(${idx})" id="card-option-${idx}" class="aspect-square bg-slate-50 border-2 border-slate-100 rounded-xl overflow-hidden cursor-pointer hover:border-slate-300 transition-all shadow-sm flex items-center justify-center">
-                                ${renderPresetSVG(id)}
+                                ${renderPresetSVG(fileName)}
                             </div>
                         `).join('')}
                     </div>
@@ -584,11 +516,10 @@
                         <p class="text-xs text-slate-400">親が上の言葉をつけて選んだカードは、以下のどれだと思いますか？</p>
                     </div>
 
-                    <!-- 6枚のカードリスト -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        ${generatedCards.map((id, idx) => `
+                        ${generatedCards.map((fileName, idx) => `
                             <div onclick="selectChildVote(${idx})" id="vote-card-option-${idx}" class="aspect-square bg-slate-50 border-2 border-slate-100 rounded-xl overflow-hidden cursor-pointer hover:border-slate-300 transition-all shadow-sm flex items-center justify-center">
-                                ${renderPresetSVG(id)}
+                                ${renderPresetSVG(fileName)}
                             </div>
                         `).join('')}
                     </div>
@@ -829,13 +760,13 @@
         }
 
         // ==========================================
-        // Google Driveの画像ファイルを表示する関数
+        // GitHub内の同一フォルダにある画像を表示する関数
         // ==========================================
-        function renderPresetSVG(imageId) {
-            const url = `https://drive.google.com/uc?export=view&id=${imageId}`;
+        function renderPresetSVG(fileName) {
+            // 同一リポジトリ内の相対パスで画像を読み込みます
             const fallbackUrl = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400";
-            return `<img src="${url}" class="w-full h-full object-cover rounded-xl border border-slate-200" alt="お題イラスト" onerror="this.onerror=null; this.src='${fallbackUrl}';">`;
+            return `<img src="${fileName}" class="w-full h-full object-cover rounded-xl border border-slate-200" alt="お題イラスト" onerror="this.onerror=null; this.src='${fallbackUrl}';">`;
         }
     </script>
 </body>
-</html>　
+</html>
