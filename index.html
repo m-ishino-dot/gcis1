@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コトバ・パレット 〜視点のちがい発見ゲーム〜</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
@@ -28,6 +31,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between text-slate-800">
 
+    <!-- ヘッダー -->
     <header class="bg-white border-b border-slate-100 py-4 px-6 shadow-sm sticky top-0 z-50">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -39,6 +43,7 @@
                     <p class="text-[10px] text-slate-400 font-bold tracking-wider">PALETTE OF PERSPECTIVES</p>
                 </div>
             </div>
+            <!-- ルール表示 -->
             <div class="flex items-center space-x-2">
                 <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
                     <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-600"></i>
@@ -52,8 +57,10 @@
         </div>
     </header>
 
+    <!-- メインコンテンツ -->
     <main class="max-w-5xl w-full mx-auto p-4 md:p-6 flex-grow flex flex-col justify-center">
 
+        <!-- =================== 【画面1】スタート・説明画面 =================== -->
         <section id="screen-start" class="animate-pop bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-12 text-center max-w-2xl mx-auto">
             <span class="text-xs font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1 rounded-full">
                 多様性理解・1台プレイ特化ゲーム
@@ -92,6 +99,7 @@
             </div>
         </section>
 
+        <!-- =================== 【画面2】メンバー名登録画面 =================== -->
         <section id="screen-setup" class="hidden animate-pop bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-8 max-w-md mx-auto w-full">
             <h3 class="text-xl font-bold text-slate-900 mb-2 flex items-center space-x-2">
                 <i data-lucide="user-plus" class="text-indigo-600"></i>
@@ -118,7 +126,9 @@
             </div>
         </section>
 
+        <!-- =================== 【画面3】メインゲーム画面 =================== -->
         <section id="screen-game" class="hidden animate-pop flex flex-col space-y-6">
+            <!-- ゲーム進行ステータスバー -->
             <div class="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm flex flex-col sm:flex-row justify-between items-center gap-2">
                 <div class="flex items-center space-x-3">
                     <span id="current-round-badge" class="text-xs font-bold bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">
@@ -128,15 +138,19 @@
                         親：あきら さんの番
                     </span>
                 </div>
+                <!-- 各自の現在のスコア表示 -->
                 <div class="flex flex-wrap justify-center gap-2" id="scores-mini-display">
                 </div>
             </div>
 
+            <!-- 動的に差し替えられる、お題決め / 推理バトンリレーのコンテナ -->
             <div id="game-active-panel" class="bg-white border border-slate-100 shadow-xl rounded-3xl p-6 md:p-8 min-h-[450px] flex flex-col justify-between">
             </div>
         </section>
 
+        <!-- =================== 【画面4】結果画面 =================== -->
         <section id="screen-result" class="hidden animate-pop space-y-6">
+            <!-- 上部サマリーカード -->
             <div class="bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-xl text-center md:text-left">
                 <span class="text-xs font-bold bg-indigo-500/30 text-indigo-200 px-3 py-1 rounded-full">
                     ゲーム終了！
@@ -147,6 +161,7 @@
                 </p>
             </div>
 
+            <!-- ランキングリスト -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div class="lg:col-span-8 space-y-4">
                     <h3 class="text-lg font-bold text-slate-900 px-1 flex items-center space-x-2">
@@ -157,6 +172,7 @@
                     </div>
                 </div>
 
+                <!-- 多様性理解への問いかけ -->
                 <div class="lg:col-span-4 space-y-6">
                     <div class="bg-amber-50 border border-amber-100 rounded-3xl p-6 shadow-sm">
                         <h4 class="font-black text-amber-900 text-sm flex items-center space-x-1.5 mb-3">
@@ -185,6 +201,7 @@
                 </div>
             </div>
 
+            <!-- アクションエリア -->
             <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-center items-center gap-3">
                 <button onclick="goToScreen('start')" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center space-x-1.5">
                     <i data-lucide="home" class="w-4 h-4"></i>
@@ -199,12 +216,14 @@
 
     </main>
 
+    <!-- フッター -->
     <footer class="bg-white border-t border-slate-100 py-4 px-6 text-center text-xs text-slate-400 mt-8">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
             <p>コトバ・パレット © 2026 — ディクシット再現・多様性理解ワークツール（1台プレイ完全ローカル版）</p>
         </div>
     </footer>
 
+    <!-- JavaScript ロジック -->
     <script>
         // ==========================================
         // 【自動生成】dixit_0001.jpg 〜 dixit_0046.jpg のファイル名を自動で46枚分登録します
@@ -516,6 +535,7 @@
                         <p class="text-xs text-slate-400">親が上の言葉をつけて選んだカードは、以下のどれだと思いますか？</p>
                     </div>
 
+                    <!-- 6枚のカードリスト -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                         ${generatedCards.map((fileName, idx) => `
                             <div onclick="selectChildVote(${idx})" id="vote-card-option-${idx}" class="aspect-square bg-slate-50 border-2 border-slate-100 rounded-xl overflow-hidden cursor-pointer hover:border-slate-300 transition-all shadow-sm flex items-center justify-center">
@@ -761,11 +781,56 @@
 
         // ==========================================
         // GitHub内の同一フォルダにある画像を表示する関数
+        // （エラー発生時、拡張子の大文字小文字を全自動でテスト・解決します）
         // ==========================================
         function renderPresetSVG(fileName) {
-            // 同一リポジトリ内の相対パスで画像を読み込みます
-            const fallbackUrl = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400";
-            return `<img src="${fileName}" class="w-full h-full object-cover rounded-xl border border-slate-200" alt="お題イラスト" onerror="this.onerror=null; this.src='${fallbackUrl}';">`;
+            const cleanName = fileName.substring(0, fileName.lastIndexOf('.'));
+            return `
+                <div class="relative w-full h-full">
+                    <img src="./${fileName}" 
+                         class="w-full h-full object-cover rounded-xl border border-slate-200" 
+                         alt="お題イラスト" 
+                         data-basename="${cleanName}"
+                         data-retry="0"
+                         onerror="handleImageError(this)">
+                </div>
+            `;
+        }
+
+        // ==========================================
+        // エラー自動フォールバックエンジン
+        // スマホ撮影による大文字拡張子（.JPG, .PNG）や
+        // 各種画像形式を総当たりで解決します
+        // ==========================================
+        window.handleImageError = function(img) {
+            const retryCount = parseInt(img.getAttribute('data-retry') || '0', 10);
+            const baseName = img.getAttribute('data-basename');
+            
+            // アップロードされる可能性の高い、大文字小文字の拡張子リスト
+            const fallbacks = [
+                '.JPG',   // 大文字JPG（iPhone撮影で最も多い形式）
+                '.png',   // 小文字PNG
+                '.PNG',   // 大文字PNG
+                '.jpeg',  // 小文字JPEG
+                '.JPEG',  // 大文字JPEG
+                '.jpg'    // 小文字jpgへの再アクセス
+            ];
+
+            if (retryCount < fallbacks.length) {
+                const nextExt = fallbacks[retryCount];
+                img.setAttribute('data-retry', retryCount + 1);
+                img.src = `./${baseName}${nextExt}`;
+            } else {
+                // すべて失敗した場合のみ、Unsplashの代替抽象アートに切り替え
+                img.onerror = null;
+                img.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400";
+                
+                // エラー警告枠の付与（開発・デバッグ用）
+                const parent = img.closest('.aspect-square');
+                if (parent) {
+                    parent.classList.add('border-rose-300');
+                }
+            }
         }
     </script>
 </body>
