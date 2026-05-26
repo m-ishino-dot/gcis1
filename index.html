@@ -83,7 +83,10 @@
                 <p class="font-bold text-slate-700">③ 並べて一斉投票！（★一画面でワイワイ）</p>
                 <p class="pl-3 text-slate-500">集まったカードをシャッフルして公開します。親以外のプレイヤーは「どれが親の出したカードか」を予想し、タブレットをみんなで覗き込みながら、裏向きで同時に投票します。全員が選び終わったら<strong>「せーのでオープン！」</strong>します。</p>
                 
-                <p class="font-bold text-slate-700">④ ドキドキの得点計算</p>
+                <p class="font-bold text-slate-700">④ 投票制限の撤去 ＆ ペナルティ</p>
+                <p class="pl-3 text-slate-500 font-bold text-indigo-700">【重要】仕込んだカードが誰のものかバレないよう、投票時は全員にすべての選択肢（1〜最大5番）が表示されます。ただし、誤って自分のカードに投票してしまうと「誤投票ペナルティ」としてその子の基礎得点は0点になります！</p>
+                
+                <p class="font-bold text-slate-700">⑤ ドキドキの得点計算</p>
                 <ul class="list-disc pl-7 space-y-1 text-slate-500">
                     <li><strong>全員正解</strong> または <strong>全員不正解</strong> の場合：親は <strong>0点</strong>、子は <strong>全員2点</strong>。</li>
                     <li><strong>一部の人が正解</strong> した場合：親は <strong>3点</strong>、正解した子は <strong>3点</strong>。</li>
@@ -703,7 +706,7 @@
             panel.innerHTML = `
                 <div class="space-y-5">
                     <div>
-                        <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">ステップ 2/4</span>
+                        <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-100">ステップ 2/4</span>
                         <h3 class="text-lg font-black text-slate-900 mt-1 mb-1">お題に仕込む絵を選ぼう</h3>
                         <p class="text-[11px] text-slate-400">プレイヤー: <span class="font-bold text-slate-800">${childPlayer.name} さん</span>の手札です。</p>
                         
@@ -858,27 +861,24 @@
                                     ${idx + 1}
                                 </div>
                                 <button class="absolute bottom-1 right-1 bg-black/60 text-white p-1 rounded-md opacity-80">
-                                    <i data-lucide="zoom-in" class="w-3 h-3"></i>
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
                                 </button>
                             </div>
                         `).join('')}
                     </div>
 
-                    <!-- 【ここが重要！】子全員で1つの画面を見ながら裏向きシークレット投票 -->
+                    <!-- 【ここが重要！】子全員で1つの画面を見ながら裏向きシークレット投票 (自制限ロックなし) -->
                     <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 space-y-4">
                         <div class="border-b border-slate-200 pb-2 flex justify-between items-center">
                             <span class="text-xs font-extrabold text-slate-700 flex items-center gap-1">
                                 <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-indigo-500"></i>
                                 <span>子プレイヤーの裏向き投票パネル</span>
                             </span>
-                            <span class="text-[10px] text-slate-400">※自分の仕込んだカード番号は選べません</span>
+                            <span class="text-[10px] text-rose-500 font-extrabold">※自分の仕込んだ絵を選んだら誤投票ペナルティで0点になります！</span>
                         </div>
 
                         <div class="space-y-3">
                             ${childrenList.map(child => {
-                                // このプレイヤーが仕込んだカードのシャッフル場でのインデックスを調べる（投票不可にする）
-                                const mySubmittedIndex = roundData.shuffledSubmissions.findIndex(sub => sub.player === child.name);
-                                
                                 return `
                                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-white border border-slate-200/50 p-2.5 rounded-xl">
                                         <div class="flex items-center space-x-2">
@@ -886,26 +886,13 @@
                                             <span class="font-extrabold text-xs text-slate-800">${child.name}</span>
                                         </div>
                                         
-                                        <!-- 投票ボタン -->
+                                        <!-- 投票ボタン (制限無く1からすべて選択可能に。ネタバレを完璧に防止します) -->
                                         <div class="flex flex-wrap gap-1.5" id="vote-row-${child.name}">
-                                            ${roundData.shuffledSubmissions.map((sub, sIdx) => {
-                                                const isMyCard = (sIdx === mySubmittedIndex);
-                                                const hasVotedThis = (roundData.votes[child.name] === sIdx);
-                                                
-                                                if (isMyCard) {
-                                                    return `
-                                                        <button class="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200/50 text-[10px] text-slate-300 font-bold cursor-not-allowed" disabled title="自分のカード">
-                                                            自
-                                                        </button>
-                                                    `;
-                                                } else {
-                                                    return `
-                                                        <button onclick="castSecretVote('${child.name}', ${sIdx})" id="btn-vote-${child.name}-${sIdx}" class="w-8 h-8 rounded-lg border-2 border-slate-200 bg-white hover:bg-slate-50 text-xs font-extrabold text-slate-600 transition-all">
-                                                            ${sIdx + 1}
-                                                        </button>
-                                                    `;
-                                                }
-                                            }).join('')}
+                                            ${roundData.shuffledSubmissions.map((sub, sIdx) => `
+                                                <button onclick="castSecretVote('${child.name}', ${sIdx})" id="btn-vote-${child.name}-${sIdx}" class="w-8 h-8 rounded-lg border-2 border-slate-200 bg-white hover:bg-slate-50 text-xs font-extrabold text-slate-600 transition-all">
+                                                    ${sIdx + 1}
+                                                </button>
+                                            `).join('')}
                                             <span id="vote-status-${child.name}" class="text-xs text-slate-400 font-bold ml-2 self-center flex items-center gap-0.5">
                                                 <i data-lucide="circle-dot" class="w-3.5 h-3.5 text-slate-300"></i>未投票
                                             </span>
@@ -934,7 +921,6 @@
             
             // 行のすべてのボタンをリセットして、選ばれたボタンだけを活性マークにする
             const childrenList = players.filter((p, idx) => idx !== storytellerIndex);
-            const mySubmittedIndex = roundData.shuffledSubmissions.findIndex(sub => sub.player === playerName);
 
             for (let sIdx = 0; sIdx < roundData.shuffledSubmissions.length; sIdx++) {
                 const btn = document.getElementById(`btn-vote-${playerName}-${sIdx}`);
@@ -948,7 +934,7 @@
             }
 
             // 未投票マークを「投票済み」に変える (中身は隠す)
-            const statusLabel = document.getElementById(`vote-status-${playerName}`);
+            const statusLabel = document.getElementById('vote-status-' + playerName);
             statusLabel.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i>投票完了`;
             statusLabel.className = "text-xs text-emerald-600 font-bold ml-2 self-center flex items-center gap-0.5";
             lucide.createIcons();
@@ -979,15 +965,24 @@
             const parentPlayer = players[storytellerIndex];
             const childrenList = players.filter((p, idx) => idx !== storytellerIndex);
 
-            // 正解した子のリスト
+            // 正解した子のリスト（ただし誤投票した人は除外される）
             const correctChildren = [];
             const incorrectChildren = [];
+            const selfVotedChildren = []; // 自分のカードに間違えて投票した人リスト
 
             childrenList.forEach(child => {
+                const childCardIndex = roundData.shuffledSubmissions.findIndex(sub => sub.player === child.name);
                 const vote = roundData.votes[child.name];
-                if (vote === correctCardIndex) {
+
+                if (vote === childCardIndex) {
+                    // 誤投票（ペナルティ）
+                    selfVotedChildren.push(child.name);
+                    incorrectChildren.push(child.name);
+                } else if (vote === correctCardIndex) {
+                    // 正解
                     correctChildren.push(child.name);
                 } else {
+                    // 不正解
                     incorrectChildren.push(child.name);
                 }
             });
@@ -1005,8 +1000,13 @@
                 roundScoresGained[parentPlayer.name] += 0;
 
                 childrenList.forEach(child => {
-                    child.score += 2;
-                    roundScoresGained[child.name] += 2;
+                    // 誤投票した人は2点獲得できない
+                    if (selfVotedChildren.includes(child.name)) {
+                        roundScoresGained[child.name] += 0;
+                    } else {
+                        child.score += 2;
+                        roundScoresGained[child.name] += 2;
+                    }
                 });
             } else if (correctCount === totalChildrenCount) {
                 // 子全員が当ててしまった
@@ -1015,8 +1015,13 @@
                 roundScoresGained[parentPlayer.name] += 0;
 
                 childrenList.forEach(child => {
-                    child.score += 2;
-                    roundScoresGained[child.name] += 2;
+                    // 誤投票した人は2点獲得できない
+                    if (selfVotedChildren.includes(child.name)) {
+                        roundScoresGained[child.name] += 0;
+                    } else {
+                        child.score += 2;
+                        roundScoresGained[child.name] += 2;
+                    }
                 });
             } else {
                 // 絶妙！一部の人が正解した
@@ -1033,7 +1038,7 @@
                 });
             }
 
-            // 被投票ボーナス（騙し絵ポイント）：子は他人が自分のカードに投票するごとに+1点
+            // 被投票ボーナス（騙し絵ポイント）：子は他人が自分のカードに投票するごとに+1点（本人の誤投票はカウントされません）
             const bonusDetails = [];
             childrenList.forEach(child => {
                 // この子が提出したカードのシャッフルインデックス
@@ -1071,18 +1076,16 @@
                 }
             });
 
-            // 誰かが30点に達したか、あるいは誰も手札を6枚に補充できなくなった（山札が枯渇した）かの終了条件チェック
+            // 30点到達、または山札枯渇チェック
             let isGameOver = false;
             let gameOverReason = "";
 
-            // 条件1: 30点到達
             const winners = players.filter(p => p.score >= GOAL_SCORE);
             if (winners.length > 0) {
                 isGameOver = true;
                 gameOverReason = "誰かのスコアが30点に到達したため、ゲーム終了です！";
             }
 
-            // 条件2: 山札が尽きて全員に次の手札補充が行えない場合
             const hasEmptyHandIssues = players.some(p => p.hand.length < 6);
             if (hasEmptyHandIssues && dixitDeck.length === 0) {
                 isGameOver = true;
@@ -1105,7 +1108,6 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                             ${roundData.shuffledSubmissions.map((sub, idx) => {
                                 const isParent = sub.isParent;
-                                // このカードに投票したプレイヤー達
                                 const votedPlayers = [];
                                 players.forEach(p => {
                                     if (roundData.votes[p.name] === idx) {
@@ -1175,14 +1177,37 @@
                     <!-- 今回の獲得点数 -->
                     <div class="space-y-2">
                         <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider px-1">各自のラウンド獲得ポイント</h4>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             ${players.map(p => {
                                 const isParent = (p.name === parentPlayer.name);
+                                if (isParent) {
+                                    return `
+                                        <div class="border rounded-xl p-2.5 bg-white flex justify-between items-center border-l-4 border-l-indigo-600">
+                                            <div>
+                                                <span class="text-[9px] font-bold text-slate-400 block">親</span>
+                                                <span class="font-bold text-slate-800 text-xs">${p.name}</span>
+                                            </div>
+                                            <div class="text-right">
+                                                <span class="font-black text-sm text-indigo-600">+${roundScoresGained[p.name]}点</span>
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+
+                                const myCardIndex = roundData.shuffledSubmissions.findIndex(sub => sub.player === p.name);
+                                const childVote = roundData.votes[p.name];
+                                const isSelfVote = (childVote === myCardIndex);
+                                const isCorrect = correctChildren.includes(p.name);
+
                                 return `
-                                    <div class="border rounded-xl p-2.5 bg-white flex justify-between items-center ${isParent ? 'border-l-4 border-l-indigo-600' : 'border-slate-100' }">
+                                    <div class="border rounded-xl p-2.5 bg-white flex justify-between items-center ${isCorrect && !isSelfVote ? 'border-l-4 border-l-emerald-500' : isSelfVote ? 'border-l-4 border-l-rose-500' : 'border-slate-100' }">
                                         <div>
-                                            <span class="text-[9px] font-bold text-slate-400 block">${isParent ? '親' : '子'}</span>
+                                            <span class="text-[9px] font-bold text-slate-400 block">子</span>
                                             <span class="font-bold text-slate-800 text-xs">${p.name}</span>
+                                            <span class="text-[9px] font-medium text-slate-400 block">
+                                                投票先: [${childVote + 1}番]
+                                                ${isSelfVote ? '<span class="text-rose-600 font-extrabold ml-1">誤投票ペナルティ(0点)</span>' : isCorrect ? '<span class="text-emerald-600 font-bold ml-1">正解！</span>' : '<span class="text-slate-400 font-bold ml-1">不正解</span>'}
+                                            </span>
                                         </div>
                                         <div class="text-right">
                                             <span class="font-black text-sm text-indigo-600">+${roundScoresGained[p.name]}点</span>
