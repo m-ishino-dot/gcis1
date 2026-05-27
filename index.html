@@ -25,8 +25,8 @@
         }
         .card-selected {
             border-color: #4f46e5 !important;
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.3);
-            transform: scale(1.02);
+            box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.3);
+            transform: scale(1.03);
         }
     </style>
 </head>
@@ -37,21 +37,21 @@
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-500 text-white p-2 rounded-xl shadow-md">
-                    <i data-lucide="palette" class="w-5 h-5"></i>
+                    <i data-lucide="palette" class="w-6 h-6"></i>
                 </div>
                 <div>
-                    <h1 class="font-black text-lg bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">コトバ・パレット</h1>
-                    <p class="text-[9px] text-slate-400 font-bold tracking-wider">PALETTE OF PERSPECTIVES</p>
+                    <h1 class="font-black text-2xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">コトバ・パレット</h1>
+                    <p class="text-[10px] text-slate-400 font-bold tracking-wider">PALETTE OF PERSPECTIVES</p>
                 </div>
             </div>
             <!-- モード表示 -->
             <div class="flex items-center space-x-2">
-                <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
-                    <i data-lucide="sparkles" class="w-3 h-3 text-indigo-600"></i>
+                <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-600"></i>
                     <span>ディクシット・完全再現モード</span>
                 </div>
-                <button onclick="resetToHome()" class="text-[10px] font-bold text-slate-500 hover:text-rose-600 hover:bg-rose-50 px-2.5 py-1 rounded-lg border border-slate-200 transition-all flex items-center space-x-1">
-                    <i data-lucide="home" class="w-3 h-3"></i>
+                <button onclick="resetToHome()" class="text-xs font-bold text-slate-500 hover:text-rose-600 hover:bg-rose-50 px-2.5 py-1 rounded-lg border border-slate-200 transition-all flex items-center space-x-1">
+                    <i data-lucide="home" class="w-4 h-4"></i>
                     <span>ホーム</span>
                 </button>
             </div>
@@ -66,7 +66,7 @@
             <span class="text-xs font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1 rounded-full">
                 Dixit再現・多様性理解ボードゲーム
             </span>
-            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-4 mb-4">
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-4 mb-4">
                 同じ絵を見ても、<br class="md:hidden">感じ方はこんなに違う！
             </h2>
             
@@ -93,11 +93,11 @@
                     <li><strong>騙しボーナス（子の特権）</strong>：親以外の子は、他のプレイヤーが自分の仕込んだカードに投票してくれた場合、<strong>1票につき追加で1点</strong>を獲得！</li>
                 </ul>
                 <hr>
-                <p class="text-center font-black text-indigo-600">🏆 誰かが30点に達するか、山札がなくなったら終了！最も高得点な人の勝利！</p>
+                <p class="text-center font-black text-indigo-600">🏆 誰かが20点に達するか、山札がなくなったら終了！最も高得点な人の勝利！</p>
             </div>
 
             <div class="flex flex-col items-center justify-center">
-                <button onclick="goToScreen('setup')" class="group bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center space-x-2 w-full sm:w-auto justify-center">
+                <button onclick="goToScreen('setup')" class="group bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center space-x-2 w-full sm:w-auto justify-center">
                     <i data-lucide="users" class="w-5 h-5"></i>
                     <span>メンバーを登録してはじめる</span>
                     <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
@@ -107,8 +107,8 @@
 
         <!-- =================== 【画面2】メンバー名登録画面 =================== -->
         <section id="screen-setup" class="hidden animate-pop bg-white rounded-3xl border border-slate-100 shadow-xl p-6 md:p-8 max-w-md mx-auto w-full">
-            <h3 class="text-xl font-bold text-slate-900 mb-1 flex items-center space-x-2">
-                <i data-lucide="user-plus" class="text-indigo-600"></i>
+            <h3 class="text-2xl font-bold text-slate-900 mb-1 flex items-center space-x-2">
+                <i data-lucide="user-plus" class="text-indigo-600 w-6 h-6"></i>
                 <span>メンバーの名前を入力</span>
             </h3>
             <p class="text-xs text-slate-500 mb-6">参加する人の名前を入力してください。（最大5名まで）</p>
@@ -138,32 +138,35 @@
             <!-- スコアボード（すごろくゲージ風表示） -->
             <div class="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm space-y-3">
                 <div class="flex justify-between items-center">
-                    <span class="text-xs font-bold text-slate-500 flex items-center gap-1">
-                        <i data-lucide="trending-up" class="w-3.5 h-3.5 text-indigo-500"></i>
-                        <span>スコアボード (ゴール: 30点)</span>
+                    <span class="text-sm font-bold text-slate-500 flex items-center gap-1">
+                        <i data-lucide="trending-up" class="w-4 h-4 text-indigo-500"></i>
+                        <span>スコアボード (ゴール: <span class="font-extrabold text-indigo-600">20点</span>)</span>
                     </span>
-                    <span id="deck-count-badge" class="text-[10px] font-black bg-amber-50 text-amber-700 border border-amber-100 px-2.5 py-0.5 rounded-md">
-                        山札残り: 46枚
+                    <span id="practice-round-badge" class="hidden text-xs font-black bg-purple-100 text-purple-800 border border-purple-200 px-3 py-1 rounded-full animate-pulse">
+                        ⚠️ 練習ラウンド実施中 (お試しターン)
+                    </span>
+                    <span id="deck-count-badge" class="text-xs font-black bg-amber-50 text-amber-700 border border-amber-100 px-2.5 py-1 rounded-md">
+                        山札残り: 76枚
                     </span>
                 </div>
                 <!-- ゲージ型進行マップ -->
-                <div class="space-y-2.5" id="scoreboard-progress-container">
+                <div class="space-y-3" id="scoreboard-progress-container">
                 </div>
             </div>
 
             <!-- 現在のターン＆お題情報 -->
-            <div class="bg-white border border-slate-100 p-3.5 rounded-2xl shadow-sm flex justify-between items-center gap-2">
+            <div class="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm flex justify-between items-center gap-2">
                 <div class="flex items-center space-x-3">
-                    <span id="current-round-badge" class="text-xs font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-lg border border-indigo-100 shrink-0">
+                    <span id="current-round-badge" class="text-sm font-bold bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-100 shrink-0">
                         ラウンド 1
                     </span>
-                    <span id="storyteller-badge" class="text-sm font-bold text-slate-700">
+                    <span id="storyteller-badge" class="text-lg font-black text-slate-700">
                         親の番
                     </span>
                 </div>
                 <div id="active-theme-container" class="hidden shrink-0">
                     <span class="text-xs text-slate-400 font-bold block text-right">お題コトバ</span>
-                    <span id="active-theme-text" class="text-sm font-black text-indigo-600 bg-indigo-50/50 border border-indigo-100 px-3 py-1 rounded-xl">お題未定</span>
+                    <span id="active-theme-text" class="text-lg font-black text-indigo-600 bg-indigo-50/50 border border-indigo-100 px-4 py-1.5 rounded-xl">お題未定</span>
                 </div>
             </div>
 
@@ -181,14 +184,14 @@
                 </span>
                 <h2 class="text-3xl font-extrabold mt-3">最終結果発表 🏆</h2>
                 <p class="text-slate-300 text-xs md:text-sm mt-1 leading-relaxed">
-                    誰かが30点に達した、あるいは山札がすべてなくなったためゲーム終了です。みんなの最終得点です。
+                    誰かが20点に達した、あるいは山札がすべてなくなったためゲーム終了です。みんなの最終得点です。
                 </p>
             </div>
 
             <!-- ランキングリスト -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div class="lg:col-span-8 space-y-4">
-                    <h3 class="text-lg font-bold text-slate-900 px-1 flex items-center space-x-2">
+                    <h3 class="text-xl font-bold text-slate-900 px-1 flex items-center space-x-2">
                         <i data-lucide="trophy" class="text-yellow-500"></i>
                         <span>最終ランキング</span>
                     </h3>
@@ -251,6 +254,28 @@
         <p class="text-slate-400 text-xs mt-4 text-center">画面のどこかをタップすると戻ります</p>
     </div>
 
+    <!-- 練習ラウンド終了時の中間モーダル（ここから本番用） -->
+    <div id="practice-end-modal" class="fixed inset-0 bg-slate-900/90 z-50 hidden flex-col items-center justify-center p-4 animate-pop">
+        <div class="bg-white rounded-3xl p-6 md:p-10 max-w-lg w-full text-center shadow-2xl border border-indigo-100 space-y-6">
+            <div class="w-20 h-20 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto shadow-md">
+                <i data-lucide="swords" class="w-10 h-10 animate-bounce"></i>
+            </div>
+            <div class="space-y-2">
+                <span class="text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200 px-3 py-1 rounded-full">練習はここまで！</span>
+                <h3 class="text-3xl font-black text-slate-900 mt-2">ここから本番スタート！</h3>
+                <p class="text-sm text-slate-500 leading-relaxed pt-2">
+                    お試しプレイ（練習ラウンド）が1ターン終了しました。<br>
+                    ルールはバッチリ覚えましたか？<br>
+                    <span class="text-indigo-600 font-extrabold text-base">全員のスコアを 0点 にリセット</span>し、目標の <span class="font-black text-indigo-600">20点</span> に向けた真剣勝負をここから開始します！
+                </p>
+            </div>
+            <button onclick="closePracticeEndModalAndStart()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-black py-4 rounded-2xl text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2">
+                <span>全員 0点から本番開始！ 🔥</span>
+                <i data-lucide="play" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
+
     <!-- フッター -->
     <footer class="bg-white border-t border-slate-100 py-4 px-6 text-center text-xs text-slate-400 mt-8">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
@@ -263,12 +288,16 @@
         // ==========================================
         // グローバル定数とゲームのライフサイクル管理
         // ==========================================
-        const GOAL_SCORE = 30; // あがり点数
+        const GOAL_SCORE = 20; // 終了得点を【20点】に変更
         const MAX_PLAYERS = 5; // 最大プレイヤー数
+        const TOTAL_CARDS_COUNT = 76; // 将来追加される分を含めた【最大76枚】に拡張！
         
-        let dixitDeck = []; // 山札 (1〜46の配列をシャッフル)
+        let dixitDeck = []; // 山札 (1〜76の配列をシャッフル)
         let players = []; // プレイヤー配列: { name: "", hand: [], score: 0, color: "" }
         
+        // 練習ラウンド用ステート
+        let isPracticeRound = true; // 初回プレイは練習からスタート
+
         // プレイヤーのイメージカラー設定
         const PLAYER_COLORS = [
             { bg: 'bg-indigo-500', text: 'text-indigo-600', ring: 'ring-indigo-500', border: 'border-indigo-200', bgLight: 'bg-indigo-50' },
@@ -283,7 +312,7 @@
 
         // 各ラウンド内の一時ステート
         let roundData = {
-            parentCard: null,       // 親が選んだカードの番号 (1〜46)
+            parentCard: null,       // 親が選んだカードの番号 (1〜76)
             parentTitle: "",        // 親のお題コトバ
             submissions: [],        // 各自が提出したカード: { player: "名前", card: 数値, isParent: bool }
             shuffledSubmissions: [], // シャッフルして場に並べられたカード
@@ -343,7 +372,7 @@
                 <div class="${colorObj.bg} text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                     ${number}
                 </div>
-                <input type="text" value="${defaultValue}" placeholder="プレイヤー名" class="member-name-input flex-grow px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm text-slate-800 font-bold">
+                <input type="text" value="${defaultValue}" placeholder="プレイヤー名" class="member-name-input flex-grow px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base text-slate-800 font-extrabold">
                 ${number > 3 ? `
                     <button onclick="removeMemberInput(${number})" class="text-rose-500 hover:bg-rose-50 p-2 rounded-xl border border-slate-100">
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
@@ -366,7 +395,6 @@
             const element = document.getElementById(`input-wrapper-${number}`);
             if (element) {
                 element.remove();
-                // 番号とイニシャル、マージンなどの属性を振りなおす
                 const inputs = document.querySelectorAll('#member-inputs-container > div');
                 inputs.forEach((div, idx) => {
                     const count = idx + 1;
@@ -394,12 +422,12 @@
         }
 
         // ==========================================
-        // ゲーム管理 ＆ 山札初期化
+        // ゲーム管理 ＆ 山札初期化（最大76枚に対応）
         // ==========================================
         function initNewDeck() {
-            // 1〜46の山札を作成
             dixitDeck = [];
-            for (let i = 1; i <= 46; i++) {
+            // ループを最大拡張枚数（76）までに動的に変更
+            for (let i = 1; i <= TOTAL_CARDS_COUNT; i++) {
                 dixitDeck.push(i);
             }
             // 完全シャッフル
@@ -433,6 +461,9 @@
                 return;
             }
 
+            // 初回は練習ラウンドにする
+            isPracticeRound = true;
+
             // 山札と手札の初期配分
             initNewDeck();
             
@@ -458,6 +489,7 @@
                 p.score = 0;
                 p.hand = [];
             });
+            isPracticeRound = false; // 再スタート時はダイレクトに本番から
             initNewDeck();
             players.forEach(player => {
                 for (let i = 0; i < 6; i++) {
@@ -473,26 +505,31 @@
         }
 
         // ==========================================
-        // スコアボード（すごろくゲージ表示）の更新
+        // スコアボード（すごろくゲージ表示）の更新（フォント特大化）
         // ==========================================
         function updateScoreboard() {
+            // 練習バッジの切り替え表示
+            const prBadge = document.getElementById('practice-round-badge');
+            if (isPracticeRound) prBadge.classList.remove('hidden');
+            else prBadge.classList.add('hidden');
+
             // 山札の残数を更新
-            document.getElementById('deck-count-badge').innerHTML = `<i data-lucide="layers" class="w-3 h-3 inline mr-1 text-amber-600"></i>山札残り: <span class="font-extrabold text-base">${dixitDeck.length}</span> 枚`;
+            document.getElementById('deck-count-badge').innerHTML = `<i data-lucide="layers" class="w-3.5 h-3.5 inline mr-1 text-amber-600"></i>山札残り: <span class="font-extrabold text-lg">${dixitDeck.length}</span> 枚`;
             
-            // ゲージコンテナのレンダリング
+            // ゲージコンテナのレンダリング（フォント＋3ポイント大型化、デザイン調整）
             const container = document.getElementById('scoreboard-progress-container');
             container.innerHTML = players.map(p => {
                 const percent = Math.min(100, (p.score / GOAL_SCORE) * 100);
                 return `
-                    <div class="space-y-1">
-                        <div class="flex justify-between items-center text-xs">
-                            <span class="font-bold text-slate-700 flex items-center space-x-1.5">
-                                <span class="w-2.5 h-2.5 rounded-full ${p.color.bg} inline-block shadow-sm"></span>
-                                <span>${p.name}</span>
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-center text-sm md:text-base">
+                            <span class="font-black text-slate-800 flex items-center space-x-2">
+                                <span class="w-3.5 h-3.5 rounded-full ${p.color.bg} inline-block shadow-sm"></span>
+                                <span class="text-base md:text-lg">${p.name}</span>
                             </span>
-                            <span class="font-black text-slate-900">${p.score} <span class="text-[9px] font-normal text-slate-400">/ 30 点</span></span>
+                            <span class="font-black text-slate-900 text-base md:text-lg">${p.score} <span class="text-[11px] font-normal text-slate-400">/ 20 点</span></span>
                         </div>
-                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden relative shadow-inner border border-slate-200/40">
+                        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden relative shadow-inner border border-slate-200/40">
                             <div class="h-full ${p.color.bg} transition-all duration-500 rounded-full" style="width: ${percent}%"></div>
                         </div>
                     </div>
@@ -502,11 +539,16 @@
         }
 
         // ==========================================
-        // 各ラウンドのバトンリレーステートコントロール
+        // 各ラウンドの進行コントロール
         // ==========================================
         function startRound() {
-            document.getElementById('current-round-badge').textContent = `ラウンド ${currentRound}`;
-            document.getElementById('storyteller-badge').innerHTML = `<span class="px-2 py-0.5 rounded-md ${players[storytellerIndex].color.bg} text-white font-extrabold text-xs mr-1.5">親</span><span class="text-slate-900 font-extrabold text-base">${players[storytellerIndex].name}</span> さんの番`;
+            // タイトルと親バッジの文字を特大化
+            const roundBadgeText = isPracticeRound ? `練習ラウンド` : `ラウンド ${currentRound}`;
+            document.getElementById('current-round-badge').textContent = roundBadgeText;
+            document.getElementById('storyteller-badge').innerHTML = `
+                <span class="px-2.5 py-0.5 rounded-md ${players[storytellerIndex].color.bg} text-white font-extrabold text-sm mr-2 shadow-sm">親</span>
+                <span class="text-slate-900 font-black text-xl">${players[storytellerIndex].name}</span> <span class="text-sm text-slate-500 font-bold">さんの番</span>
+            `;
             
             // お題テキストを非表示にする
             document.getElementById('active-theme-container').classList.add('hidden');
@@ -523,34 +565,35 @@
 
             updateScoreboard();
 
-            // 最初：親プレイヤー用画面バトンカバー
-            showTransitionCover("storyteller-setup", players[storytellerIndex], "あなたが「親（語り部）」です！手札6枚から1枚お題の絵を選びましょう。");
+            // 最初のバトンパス（親お題決定へ）
+            const passTitle = isPracticeRound ? "【練習】「親（語り部）」の練習です！" : "あなたが「親（語り部）」です！";
+            showTransitionCover("storyteller-setup", players[storytellerIndex], `${passTitle}<br>手札6枚から1枚お題の絵を選んで、みんなに伝わる「コトバ（お題）」を入力しましょう。`);
         }
 
-        // バトンパス用全画面秘匿カバー
+        // バトンパス用全画面秘匿カバー（フォント大型化、調整）
         function showTransitionCover(nextPhase, targetPlayer, messageText) {
             const panel = document.getElementById('game-active-panel');
             panel.innerHTML = `
                 <div class="flex-grow flex flex-col items-center justify-center text-center py-10 px-2 animate-pop">
-                    <div class="bg-gradient-to-tr from-indigo-500 to-purple-500 text-white w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-indigo-100">
-                        <i data-lucide="arrow-right-left" class="w-6 h-6 animate-pulse"></i>
+                    <div class="bg-gradient-to-tr from-indigo-500 to-purple-500 text-white w-16 h-16 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-indigo-100">
+                        <i data-lucide="arrow-right-left" class="w-7 h-7 animate-pulse"></i>
                     </div>
-                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full mb-2">端末の受け渡し</span>
-                    <h3 class="text-lg font-black text-slate-800 mb-2">次は <span class="text-indigo-600 text-xl font-black underline decoration-indigo-200 underline-offset-4">${targetPlayer.name} さん</span> の番です</h3>
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full mb-2">秘密バトンパス</span>
+                    <h3 class="text-2xl font-black text-slate-900 mb-2">次は <span class="text-indigo-600 text-3xl font-black underline decoration-indigo-200 underline-offset-4">${targetPlayer.name} さん</span> の番です</h3>
                     
-                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 my-5 max-w-sm">
-                        <p class="text-xs text-slate-500 leading-relaxed">
+                    <div class="bg-slate-50 border border-slate-100 rounded-3xl p-5 my-5 max-w-sm">
+                        <p class="text-sm text-slate-600 leading-relaxed">
                             ${messageText}
                         </p>
-                        <span class="text-[10px] text-rose-500 font-extrabold mt-2.5 block flex items-center justify-center gap-1">
-                            <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
+                        <span class="text-xs text-rose-500 font-extrabold mt-3.5 block flex items-center justify-center gap-1">
+                            <i data-lucide="eye-off" class="w-4 h-4"></i>
                             ※他のプレイヤーは絶対に画面を覗かないでください！
                         </span>
                     </div>
 
-                    <button onclick="executePhaseTransition('${nextPhase}')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-2xl text-sm shadow-md hover:shadow-lg transition-all flex items-center space-x-1.5">
+                    <button onclick="executePhaseTransition('${nextPhase}')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-10 py-4 rounded-2xl text-base shadow-md hover:shadow-lg transition-all flex items-center space-x-1.5">
                         <span>画面を受け取りました</span>
-                        <i data-lucide="check" class="w-4 h-4"></i>
+                        <i data-lucide="check" class="w-5 h-5"></i>
                     </button>
                 </div>
             `;
@@ -576,15 +619,15 @@
             panel.innerHTML = `
                 <div class="space-y-5">
                     <div>
-                        <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">ステップ 1/4</span>
-                        <h3 class="text-lg font-black text-slate-900 mt-1 mb-1">お題にする絵を1枚選ぼう</h3>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">あなたの手札（他の人には秘密）の6枚です。1枚クリックして選択し、それから連想する「お題コトバ」を枠内に入力してください。</p>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded border border-indigo-100">ステップ 1/4</span>
+                        <h3 class="text-xl font-black text-slate-900 mt-1 mb-1">お題にする絵を1枚選ぼう</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">あなたの手札（他の人には秘密）の6枚です。1枚クリックして選択し、それから連想する「お題コトバ」を枠内に入力してください。</p>
                     </div>
 
-                    <!-- 3:4 縦長アスペクトカードリスト -->
-                    <div class="grid grid-cols-3 gap-2">
+                    <!-- 3:4 縦長アスペクトカードリスト（横最大5列/スクロール等幅並び） -->
+                    <div class="flex justify-start sm:justify-center gap-2 overflow-x-auto py-2 px-1 w-full" style="scroll-snap-type: x mandatory;">
                         ${parent.hand.map((cardNum, idx) => `
-                            <div onclick="selectParentCard(${idx}, ${cardNum})" id="card-option-${idx}" class="aspect-[3/4] bg-white border-2 border-slate-200 rounded-xl overflow-hidden cursor-pointer hover:border-indigo-400 transition-all p-0.5 flex flex-col justify-between relative shadow-sm">
+                            <div onclick="selectParentCard(${idx}, ${cardNum})" id="card-option-${idx}" class="aspect-[3/4] w-28 md:w-36 bg-white border-2 border-slate-200 rounded-xl overflow-hidden cursor-pointer hover:border-indigo-400 transition-all p-0.5 flex flex-col justify-between relative shadow-sm shrink-0 snap-center">
                                 ${renderCardImage(cardNum)}
                                 <button onclick="openLightbox('./dixit_${String(cardNum).padStart(4, '0')}.jpg'); event.stopPropagation();" class="absolute bottom-1 right-1 bg-black/60 hover:bg-black text-white p-1 rounded-md opacity-80 hover:opacity-100 transition-all">
                                     <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
@@ -599,15 +642,15 @@
                                 <i data-lucide="pen-tool" class="w-3.5 h-3.5 text-indigo-500"></i>
                                 <span>お題となる「コトバ（タイトル）」</span>
                             </label>
-                            <input type="text" id="parent-title-input" placeholder="文章、単語、映画タイトル、何でもOK！" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm text-slate-800 font-bold">
-                            <p class="text-[9px] text-slate-400 mt-1">
+                            <input type="text" id="parent-title-input" placeholder="文章、単語、映画タイトル、何でもOK！" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base text-slate-800 font-extrabold">
+                            <p class="text-[10px] text-slate-400 mt-1">
                                 💡 <strong>ヒント：</strong>全員に当てられても、誰も当たらなくても <strong>0点</strong>！「何人かだけがひらめく」ような、ひねったお題を考えるのがコツです。
                             </p>
                         </div>
 
                         <div class="flex justify-end pt-1">
                             <button onclick="submitStorytellerTheme()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl text-xs shadow-md transition-all flex items-center space-x-1">
-                                <span>お題コトバを口頭で言って、裏向きで出す</span>
+                                <span>お題コトバを決定し、裏向きで提出する</span>
                                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -708,21 +751,21 @@
                     <div>
                         <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-100">ステップ 2/4</span>
                         <h3 class="text-lg font-black text-slate-900 mt-1 mb-1">お題に仕込む絵を選ぼう</h3>
-                        <p class="text-[11px] text-slate-400">プレイヤー: <span class="font-bold text-slate-800">${childPlayer.name} さん</span>の手札です。</p>
+                        <p class="text-xs text-slate-400">プレイヤー: <span class="font-black text-indigo-700 text-sm">${childPlayer.name} さん</span>の手札です。</p>
                         
                         <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 my-2.5 text-center">
                             <p class="text-[10px] text-indigo-500 font-bold">親のお題コトバ</p>
-                            <p class="text-base font-black text-indigo-950 mt-0.5">「${roundData.parentTitle}」</p>
+                            <p class="text-xl font-black text-indigo-950 mt-0.5">「${roundData.parentTitle}」</p>
                         </div>
                         <p class="text-[11px] text-slate-500 leading-normal">
                             💡 手札の中から「このお題にぴったり似合いそうな絵」を1枚選んでください。他の子がこれを親の絵だと誤解して投票してくれたら、<strong>あなたに騙しボーナス（+1点/票）</strong>が入ります！
                         </p>
                     </div>
 
-                    <!-- 3:4 縦長アスペクトカードリスト -->
-                    <div class="grid grid-cols-3 gap-2">
+                    <!-- 3:4 縦長アスペクトカードリスト（横一列5列/スクロール） -->
+                    <div class="flex justify-start sm:justify-center gap-2 overflow-x-auto py-2 px-1 w-full" style="scroll-snap-type: x mandatory;">
                         ${childPlayer.hand.map((cardNum, idx) => `
-                            <div onclick="selectChildSubmissionCard(${idx}, ${cardNum})" id="child-card-option-${idx}" class="aspect-[3/4] bg-white border-2 border-slate-200 rounded-xl overflow-hidden cursor-pointer hover:border-emerald-400 transition-all p-0.5 flex flex-col justify-between relative shadow-sm">
+                            <div onclick="selectChildSubmissionCard(${idx}, ${cardNum})" id="child-card-option-${idx}" class="aspect-[3/4] w-28 md:w-36 bg-white border-2 border-slate-200 rounded-xl overflow-hidden cursor-pointer hover:border-emerald-400 transition-all p-0.5 flex flex-col justify-between relative shadow-sm shrink-0 snap-center">
                                 ${renderCardImage(cardNum)}
                                 <button onclick="openLightbox('./dixit_${String(cardNum).padStart(4, '0')}.jpg'); event.stopPropagation();" class="absolute bottom-1 right-1 bg-black/60 hover:bg-black text-white p-1 rounded-md opacity-80 hover:opacity-100 transition-all">
                                     <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
@@ -803,15 +846,15 @@
                     <span class="text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full mb-2">
                         ここからは「全員」で遊びます
                     </span>
-                    <h3 class="text-xl font-black text-slate-800 mb-2">カードの仕込みがすべて完了！</h3>
+                    <h3 class="text-2xl font-black text-slate-800 mb-2">カードの仕込みがすべて完了！</h3>
                     
-                    <div class="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-4 my-5 max-w-sm">
-                        <p class="text-xs text-indigo-950 font-bold leading-relaxed">
+                    <div class="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-5 my-5 max-w-sm">
+                        <p class="text-sm text-indigo-950 font-extrabold leading-relaxed">
                             タブレットをテーブルの中央に置いて、<br>
-                            <span class="text-indigo-600 text-sm font-black underline">全員で一つの画面を覗き込んでください！</span>
+                            <span class="text-indigo-600 text-base font-black underline">全員で一つの画面を覗き込んでください！</span>
                         </p>
-                        <p class="text-[11px] text-slate-500 mt-2 leading-normal">
-                            集まったカードをよく混ぜ合わせ、表向きに一列に並べます。
+                        <p class="text-xs text-slate-500 mt-2 leading-normal">
+                            集まったカードをシャッフルし、表向きに一列に並べて投票します。
                         </p>
                     </div>
 
@@ -840,6 +883,7 @@
             
             // 子プレイヤー（投票権のある人）のみ抽出
             const childrenList = players.filter((p, idx) => idx !== storytellerIndex);
+            const totalSubmissions = roundData.shuffledSubmissions.length;
 
             panel.innerHTML = `
                 <div class="space-y-6 animate-pop">
@@ -852,22 +896,22 @@
                         </p>
                     </div>
 
-                    <!-- 3:4 縦長アスペクトカードリスト (1〜番号で公開) -->
-                    <div class="grid grid-cols-3 gap-2">
+                    <!-- 【改善：横1列最大5列のグリッド表示】アスペクト比維持しつつ横にズラリと綺麗に並ぶ -->
+                    <div class="grid gap-2 w-full" style="grid-template-columns: repeat(${totalSubmissions}, minmax(0, 1fr))">
                         ${roundData.shuffledSubmissions.map((sub, idx) => `
                             <div onclick="openLightbox('./dixit_${String(sub.card).padStart(4, '0')}.jpg')" class="aspect-[3/4] bg-white border-2 border-slate-200 hover:border-indigo-400 cursor-zoom-in rounded-xl overflow-hidden relative shadow-sm p-0.5 flex flex-col justify-between">
                                 ${renderCardImage(sub.card)}
-                                <div class="absolute top-1 left-1 bg-indigo-600 text-white text-xs font-black w-5 h-5 rounded-md flex items-center justify-center shadow-md">
+                                <div class="absolute top-1 left-1 bg-indigo-600 text-white text-[10px] md:text-xs font-black w-4.5 h-4.5 md:w-5.5 md:h-5.5 rounded-md flex items-center justify-center shadow-md">
                                     ${idx + 1}
                                 </div>
-                                <button class="absolute bottom-1 right-1 bg-black/60 text-white p-1 rounded-md opacity-80">
-                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                <button class="absolute bottom-1 right-1 bg-black/60 text-white p-0.5 md:p-1 rounded opacity-80">
+                                    <i data-lucide="zoom-in" class="w-2.5 h-2.5 md:w-3.5 md:h-3.5"></i>
                                 </button>
                             </div>
                         `).join('')}
                     </div>
 
-                    <!-- 【ここが重要！】子全員で1つの画面を見ながら裏向きシークレット投票 (自制限ロックなし) -->
+                    <!-- 子全員で1つの画面を見ながら裏向きシークレット投票 (自制限ロックなし) -->
                     <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 space-y-4">
                         <div class="border-b border-slate-200 pb-2 flex justify-between items-center">
                             <span class="text-xs font-extrabold text-slate-700 flex items-center gap-1">
@@ -880,16 +924,17 @@
                         <div class="space-y-3">
                             ${childrenList.map(child => {
                                 return `
-                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-white border border-slate-200/50 p-2.5 rounded-xl">
+                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-white border border-slate-200/50 p-2.5 rounded-xl shadow-sm">
+                                        <!-- 【改善】プレイヤー名前のフォントを大幅大型化 -->
                                         <div class="flex items-center space-x-2">
-                                            <span class="w-2.5 h-2.5 rounded-full ${child.color.bg} shadow-sm"></span>
-                                            <span class="font-extrabold text-xs text-slate-800">${child.name}</span>
+                                            <span class="w-3.5 h-3.5 rounded-full ${child.color.bg} shadow-sm"></span>
+                                            <span class="font-black text-sm md:text-lg text-slate-800">${child.name}</span>
                                         </div>
                                         
-                                        <!-- 投票ボタン (制限無く1からすべて選択可能に。ネタバレを完璧に防止します) -->
+                                        <!-- 投票ボタン (大ボタン設計に調整) -->
                                         <div class="flex flex-wrap gap-1.5" id="vote-row-${child.name}">
                                             ${roundData.shuffledSubmissions.map((sub, sIdx) => `
-                                                <button onclick="castSecretVote('${child.name}', ${sIdx})" id="btn-vote-${child.name}-${sIdx}" class="w-8 h-8 rounded-lg border-2 border-slate-200 bg-white hover:bg-slate-50 text-xs font-extrabold text-slate-600 transition-all">
+                                                <button onclick="castSecretVote('${child.name}', ${sIdx})" id="btn-vote-${child.name}-${sIdx}" class="w-9 h-9 rounded-lg border-2 border-slate-200 bg-white hover:bg-slate-50 text-sm font-black text-slate-700 transition-all">
                                                     ${sIdx + 1}
                                                 </button>
                                             `).join('')}
@@ -904,8 +949,8 @@
 
                         <!-- 投票完了後のアクション -->
                         <div class="pt-2 border-t border-slate-100 flex justify-center">
-                            <button id="open-results-btn" onclick="submitAndCalculatePoints()" class="opacity-50 pointer-events-none w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-black px-10 py-4 rounded-xl text-xs shadow-md transition-all flex items-center justify-center space-x-1.5">
-                                <i data-lucide="eye" class="w-4 h-4"></i>
+                            <button id="open-results-btn" onclick="submitAndCalculatePoints()" class="opacity-50 pointer-events-none w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-black px-10 py-4 rounded-xl text-base shadow-md transition-all flex items-center justify-center space-x-1.5">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
                                 <span>せーので投票結果をオープン！</span>
                             </button>
                         </div>
@@ -915,7 +960,7 @@
             lucide.createIcons();
         }
 
-        // 個人の投票をクリックしたとき (他人にバレないよう一瞬選ばれ、チェックが付く)
+        // 個人の投票をクリックしたとき
         function castSecretVote(playerName, shuffledIdx) {
             roundData.votes[playerName] = shuffledIdx;
             
@@ -926,14 +971,14 @@
                 const btn = document.getElementById(`btn-vote-${playerName}-${sIdx}`);
                 if (btn) {
                     if (sIdx === shuffledIdx) {
-                        btn.className = "w-8 h-8 rounded-lg border-2 border-indigo-600 bg-indigo-50 text-xs font-black text-indigo-700 shadow-inner";
+                        btn.className = "w-9 h-9 rounded-lg border-2 border-indigo-600 bg-indigo-50 text-sm font-black text-indigo-700 shadow-inner";
                     } else {
-                        btn.className = "w-8 h-8 rounded-lg border-2 border-slate-200 bg-white hover:bg-slate-50 text-xs font-extrabold text-slate-600 transition-all";
+                        btn.className = "w-9 h-9 rounded-lg border-2 border-slate-200 bg-white hover:bg-slate-50 text-sm font-bold text-slate-600 transition-all";
                     }
                 }
             }
 
-            // 未投票マークを「投票済み」に変える (中身は隠す)
+            // 未投票マークを「投票済み」に変える
             const statusLabel = document.getElementById('vote-status-' + playerName);
             statusLabel.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i>投票完了`;
             statusLabel.className = "text-xs text-emerald-600 font-bold ml-2 self-center flex items-center gap-0.5";
@@ -951,21 +996,18 @@
         }
 
         // ==========================================
-        // 得点集計と詳細結果画面
+        // 得点集計と結果表示（横並び最大5枚対応 ＆ 練習ラウンド終了対応）
         // ==========================================
         function submitAndCalculatePoints() {
-            // 親と子の得点獲得テーブル
             const roundScoresGained = {};
             players.forEach(p => {
                 roundScoresGained[p.name] = 0;
             });
 
-            // 親の正解カードのインデックスを調べる
             const correctCardIndex = roundData.shuffledSubmissions.findIndex(sub => sub.isParent === true);
             const parentPlayer = players[storytellerIndex];
             const childrenList = players.filter((p, idx) => idx !== storytellerIndex);
 
-            // 正解した子のリスト（ただし誤投票した人は除外される）
             const correctChildren = [];
             const incorrectChildren = [];
             const selfVotedChildren = []; // 自分のカードに間違えて投票した人リスト
@@ -975,14 +1017,11 @@
                 const vote = roundData.votes[child.name];
 
                 if (vote === childCardIndex) {
-                    // 誤投票（ペナルティ）
                     selfVotedChildren.push(child.name);
                     incorrectChildren.push(child.name);
                 } else if (vote === correctCardIndex) {
-                    // 正解
                     correctChildren.push(child.name);
                 } else {
-                    // 不正解
                     incorrectChildren.push(child.name);
                 }
             });
@@ -994,13 +1033,11 @@
 
             // ディクシット得点法則
             if (correctCount === 0) {
-                // 親は誰も当てられなかった
                 mainExplanation = "親の絵を当てられた子は<strong>誰もいませんでした！</strong>(難しすぎました)<br>親は <strong>0点</strong>、子は <strong>全員に 2点</strong> が与えられます。";
                 parentPlayer.score += 0;
                 roundScoresGained[parentPlayer.name] += 0;
 
                 childrenList.forEach(child => {
-                    // 誤投票した人は2点獲得できない
                     if (selfVotedChildren.includes(child.name)) {
                         roundScoresGained[child.name] += 0;
                     } else {
@@ -1009,13 +1046,11 @@
                     }
                 });
             } else if (correctCount === totalChildrenCount) {
-                // 子全員が当ててしまった
                 mainExplanation = "親の絵を<strong>全員が正解しました！</strong>(簡単すぎました)<br>親は <strong>0点</strong>、子は <strong>全員に 2点</strong> が与えられます。";
                 parentPlayer.score += 0;
                 roundScoresGained[parentPlayer.name] += 0;
 
                 childrenList.forEach(child => {
-                    // 誤投票した人は2点獲得できない
                     if (selfVotedChildren.includes(child.name)) {
                         roundScoresGained[child.name] += 0;
                     } else {
@@ -1024,7 +1059,6 @@
                     }
                 });
             } else {
-                // 絶妙！一部の人が正解した
                 mainExplanation = "<strong>一部のプレイヤーが正解しました！</strong>(絶妙なお題コトバです！)<br>親は <strong>3点</strong>、正解した子は <strong>3点</strong> が与えられます。";
                 parentPlayer.score += 3;
                 roundScoresGained[parentPlayer.name] += 3;
@@ -1038,13 +1072,10 @@
                 });
             }
 
-            // 被投票ボーナス（騙し絵ポイント）：子は他人が自分のカードに投票するごとに+1点（本人の誤投票はカウントされません）
+            // 騙し絵ボーナス（本人の誤投票は除外）
             const bonusDetails = [];
             childrenList.forEach(child => {
-                // この子が提出したカードのシャッフルインデックス
                 const childCardIndex = roundData.shuffledSubmissions.findIndex(sub => sub.player === child.name);
-                
-                // 他の誰がこのカードに投票したかを数える
                 let votesReceived = 0;
                 const votersNames = [];
                 
@@ -1068,7 +1099,7 @@
                 }
             });
 
-            // 得点計算後の山札補充（手札が再び6枚になるように山札から1枚引く）
+            // 手札の山札補充
             players.forEach(p => {
                 const card = drawCardFromDeck();
                 if (card) {
@@ -1076,36 +1107,42 @@
                 }
             });
 
-            // 30点到達、または山札枯渇チェック
+            // ゲーム終了チェック（本番時のみ実行）
             let isGameOver = false;
             let gameOverReason = "";
 
-            const winners = players.filter(p => p.score >= GOAL_SCORE);
-            if (winners.length > 0) {
-                isGameOver = true;
-                gameOverReason = "誰かのスコアが30点に到達したため、ゲーム終了です！";
-            }
+            if (!isPracticeRound) {
+                const winners = players.filter(p => p.score >= GOAL_SCORE);
+                if (winners.length > 0) {
+                    isGameOver = true;
+                    gameOverReason = "誰かのスコアがゴール（20点）に到達したため、ゲーム終了です！";
+                }
 
-            const hasEmptyHandIssues = players.some(p => p.hand.length < 6);
-            if (hasEmptyHandIssues && dixitDeck.length === 0) {
-                isGameOver = true;
-                gameOverReason = "山札がすべて尽きて、手札の補充ができなくなったためゲーム終了です！";
+                const hasEmptyHandIssues = players.some(p => p.hand.length < 6);
+                if (hasEmptyHandIssues && dixitDeck.length === 0) {
+                    isGameOver = true;
+                    gameOverReason = "山札がすべて尽きて、手札の補充ができなくなったためゲーム終了です！";
+                }
             }
 
             // 得点計算結果を美麗なパネルに表示
             const panel = document.getElementById('game-active-panel');
+            const totalSubmissions = roundData.shuffledSubmissions.length;
+
             panel.innerHTML = `
                 <div class="space-y-6 animate-pop">
                     <div class="text-center">
-                        <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded border border-indigo-100">ラウンド結果公開</span>
-                        <h3 class="text-xl font-black text-slate-900 mt-2 mb-1">得点オープン！</h3>
+                        <span class="text-xs font-bold ${isPracticeRound ? 'text-purple-600 bg-purple-50 border-purple-100' : 'text-indigo-600 bg-indigo-50 border-indigo-100'} px-2.5 py-1 rounded border">
+                            ${isPracticeRound ? '練習お試しラウンド結果' : 'ラウンド結果公開'}
+                        </span>
+                        <h3 class="text-2xl font-black text-slate-900 mt-2 mb-1">得点オープン！</h3>
                         <p class="text-xs text-slate-400">親のお題: <span class="font-extrabold text-indigo-600 text-sm">「${roundData.parentTitle}」</span></p>
                     </div>
 
-                    <!-- 各自が提出したカードとその所有者、投票の宛先のビジュアル開示 -->
+                    <!-- 【改善：横一列最大5枚の均等並び】結果表示も横一列にスッキリ整列 -->
                     <div class="space-y-4">
                         <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider px-1">カードの正体とみんなの投票先</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="grid gap-2 w-full" style="grid-template-columns: repeat(${totalSubmissions}, minmax(0, 1fr))">
                             ${roundData.shuffledSubmissions.map((sub, idx) => {
                                 const isParent = sub.isParent;
                                 const votedPlayers = [];
@@ -1116,31 +1153,31 @@
                                 });
 
                                 return `
-                                    <div class="border rounded-2xl p-3 bg-white space-y-3 flex flex-row md:flex-col items-center md:items-stretch gap-3 md:gap-0 ${isParent ? 'border-indigo-500 ring-2 ring-indigo-500/20 shadow-md' : 'border-slate-200' }">
-                                        <!-- カード画像 (3:4縦長) -->
-                                        <div class="w-24 md:w-full aspect-[3/4] bg-slate-50 rounded-xl overflow-hidden relative border p-0.5 shrink-0">
+                                    <div class="border rounded-2xl p-2 bg-white flex flex-col justify-between items-center ${isParent ? 'border-indigo-500 ring-2 ring-indigo-500/20 shadow-md' : 'border-slate-200' }">
+                                        <!-- 縦長カード -->
+                                        <div class="aspect-[3/4] w-full bg-slate-50 rounded-xl overflow-hidden relative border p-0.5">
                                             ${renderCardImage(sub.card)}
                                             <div class="absolute top-1 left-1 bg-slate-800 text-white text-[10px] font-black w-4 h-4 rounded flex items-center justify-center">
                                                 ${idx + 1}
                                             </div>
                                         </div>
 
-                                        <div class="flex-grow space-y-2 pt-1">
+                                        <!-- 投票者・所有者情報（フォント調整） -->
+                                        <div class="w-full text-center mt-1.5 space-y-1.5">
                                             <div>
-                                                <span class="text-[9px] font-bold text-slate-400 block">提出した人</span>
-                                                <span class="font-black text-xs ${isParent ? 'text-indigo-600' : 'text-slate-700'} flex items-center gap-1">
-                                                    ${isParent ? '<i data-lucide="crown" class="w-3.5 h-3.5 text-indigo-500 inline"></i>' : ''}
-                                                    ${sub.player} ${isParent ? '(親・正解)' : ''}
+                                                <span class="text-[9px] font-bold text-slate-400 block leading-none">出した人</span>
+                                                <span class="font-black text-[11px] md:text-sm leading-tight block truncate ${isParent ? 'text-indigo-600' : 'text-slate-700'}">
+                                                    ${isParent ? '👑' : ''} ${sub.player}
                                                 </span>
                                             </div>
 
                                             <div>
-                                                <span class="text-[9px] font-bold text-slate-400 block">集まった票 (${votedPlayers.length})</span>
-                                                <div class="flex flex-wrap gap-1 mt-0.5">
+                                                <span class="text-[8px] font-bold text-slate-400 block leading-none">入った票</span>
+                                                <div class="flex flex-wrap justify-center gap-0.5 mt-1 min-h-[16px]">
                                                     ${votedPlayers.length === 0 ? `
-                                                        <span class="text-[10px] text-slate-300 font-bold">票なし</span>
+                                                        <span class="text-[9px] text-slate-300 font-bold">0票</span>
                                                     ` : votedPlayers.map(p => `
-                                                        <span class="text-[9px] font-bold px-1.5 py-0.5 rounded ${p.color.bg} text-white shadow-sm">${p.name}</span>
+                                                        <span class="text-[8px] font-bold px-1 py-0.5 rounded ${p.color.bg} text-white truncate max-w-[50px] inline-block shadow-sm" title="${p.name}">${p.name}</span>
                                                     `).join('')}
                                                 </div>
                                             </div>
@@ -1151,13 +1188,13 @@
                         </div>
                     </div>
 
-                    <!-- ルール判定のビジュアル解説 -->
+                    <!-- ルール判定の解説 -->
                     <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 text-center">
                         <p class="text-xs text-indigo-500 font-bold">親のお題難易度判定</p>
                         <p class="text-xs md:text-sm font-black text-indigo-950 mt-1.5 leading-relaxed">${mainExplanation}</p>
                     </div>
 
-                    <!-- 騙し絵ボーナス（ボーナスがあった場合のみ表示） -->
+                    <!-- 騙し絵ボーナス -->
                     ${bonusDetails.length > 0 ? `
                         <div class="bg-amber-50 border border-amber-100 rounded-2xl p-3.5">
                             <h4 class="text-xs font-bold text-amber-800 flex items-center gap-1.5 mb-1.5">
@@ -1174,7 +1211,7 @@
                         </div>
                     ` : ''}
 
-                    <!-- 今回の獲得点数 -->
+                    <!-- 【改善】獲得ポイントのフォントサイズを大幅に大きく表示 -->
                     <div class="space-y-2">
                         <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider px-1">各自のラウンド獲得ポイント</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1182,13 +1219,13 @@
                                 const isParent = (p.name === parentPlayer.name);
                                 if (isParent) {
                                     return `
-                                        <div class="border rounded-xl p-2.5 bg-white flex justify-between items-center border-l-4 border-l-indigo-600">
+                                        <div class="border rounded-xl p-3 bg-white flex justify-between items-center border-l-4 border-l-indigo-600 shadow-sm">
                                             <div>
-                                                <span class="text-[9px] font-bold text-slate-400 block">親</span>
-                                                <span class="font-bold text-slate-800 text-xs">${p.name}</span>
+                                                <span class="text-[10px] font-bold text-slate-400 block">親</span>
+                                                <span class="font-black text-slate-800 text-sm md:text-lg">${p.name}</span>
                                             </div>
                                             <div class="text-right">
-                                                <span class="font-black text-sm text-indigo-600">+${roundScoresGained[p.name]}点</span>
+                                                <span class="font-black text-base md:text-xl text-indigo-600">+${roundScoresGained[p.name]}点</span>
                                             </div>
                                         </div>
                                     `;
@@ -1200,17 +1237,17 @@
                                 const isCorrect = correctChildren.includes(p.name);
 
                                 return `
-                                    <div class="border rounded-xl p-2.5 bg-white flex justify-between items-center ${isCorrect && !isSelfVote ? 'border-l-4 border-l-emerald-500' : isSelfVote ? 'border-l-4 border-l-rose-500' : 'border-slate-100' }">
+                                    <div class="border rounded-xl p-3 bg-white flex justify-between items-center shadow-sm ${isCorrect && !isSelfVote ? 'border-l-4 border-l-emerald-500' : isSelfVote ? 'border-l-4 border-l-rose-500' : 'border-slate-100' }">
                                         <div>
-                                            <span class="text-[9px] font-bold text-slate-400 block">子</span>
-                                            <span class="font-bold text-slate-800 text-xs">${p.name}</span>
-                                            <span class="text-[9px] font-medium text-slate-400 block">
+                                            <span class="text-[10px] font-bold text-slate-400 block">子</span>
+                                            <span class="font-black text-slate-800 text-sm md:text-lg">${p.name}</span>
+                                            <span class="text-[10px] font-medium text-slate-400 block mt-0.5">
                                                 投票先: [${childVote + 1}番]
-                                                ${isSelfVote ? '<span class="text-rose-600 font-extrabold ml-1">誤投票ペナルティ(0点)</span>' : isCorrect ? '<span class="text-emerald-600 font-bold ml-1">正解！</span>' : '<span class="text-slate-400 font-bold ml-1">不正解</span>'}
+                                                ${isSelfVote ? '<span class="text-rose-600 font-extrabold ml-1">誤投票(0点ペナルティ)</span>' : isCorrect ? '<span class="text-emerald-600 font-bold ml-1">正解！</span>' : '<span class="text-slate-400 font-bold ml-1">不正解</span>'}
                                             </span>
                                         </div>
                                         <div class="text-right">
-                                            <span class="font-black text-sm text-indigo-600">+${roundScoresGained[p.name]}点</span>
+                                            <span class="font-black text-base md:text-xl text-indigo-600">+${roundScoresGained[p.name]}点</span>
                                         </div>
                                     </div>
                                 `;
@@ -1220,8 +1257,8 @@
 
                     <!-- 次へのアクション -->
                     <div class="pt-4 border-t border-slate-100 flex justify-end">
-                        <button onclick="progressRoundOrFinish(${isGameOver}, '${gameOverReason}')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-xl text-xs shadow-md transition-all flex items-center space-x-1">
-                            <span>${isGameOver ? 'ゲーム終了！最終結果画面へ' : '次のラウンド（親交代）へ'}</span>
+                        <button onclick="handleRoundCompletion(${isGameOver}, '${gameOverReason}')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-8 py-3.5 rounded-xl text-xs sm:text-sm shadow-md transition-all flex items-center space-x-1">
+                            <span>${isPracticeRound ? '練習ラウンド終了！本番を開始する ➔' : isGameOver ? 'ゲーム終了！最終結果画面へ' : '次のラウンド（親交代）へ'}</span>
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </button>
                     </div>
@@ -1229,6 +1266,37 @@
             `;
             lucide.createIcons();
             updateScoreboard();
+        }
+
+        // 練習ラウンドの終了、または通常ラウンド終了の処理
+        function handleRoundCompletion(isGameOver, reason) {
+            if (isPracticeRound) {
+                // 「ここから本番です！」モーダル表示
+                document.getElementById('practice-end-modal').classList.remove('hidden');
+                document.getElementById('practice-end-modal').classList.add('flex');
+            } else {
+                progressRoundOrFinish(isGameOver, reason);
+            }
+        }
+
+        // 練習モーダルで本番開始がクリックされたとき
+        function closePracticeEndModalAndStart() {
+            // モーダルを閉じる
+            document.getElementById('practice-end-modal').classList.add('hidden');
+            document.getElementById('practice-end-modal').classList.remove('flex');
+
+            // 【超重要】全員のスコアを 0 点に完全にリセットして練習終了！
+            players.forEach(p => {
+                p.score = 0;
+            });
+
+            isPracticeRound = false; // 本番モードON
+            currentRound = 1; // ラウンドを1に巻き戻し
+            
+            // 次の人に親を回して本番スタート！
+            storytellerIndex = (storytellerIndex + 1) % players.length;
+            
+            startRound();
         }
 
         function progressRoundOrFinish(isGameOver, reason) {
@@ -1244,7 +1312,7 @@
         }
 
         // ==========================================
-        // 【最終画面】結果ランキング
+        // 【最終画面】結果ランキング (フォント大型化)
         // ==========================================
         function renderFinalResults() {
             const rankingContainer = document.getElementById('ranking-container');
@@ -1267,17 +1335,17 @@
                 return `
                     <div class="bg-white border border-slate-200 rounded-2xl p-5 flex justify-between items-center shadow-sm hover:shadow-md transition-all animate-pop">
                         <div class="flex items-center space-x-4">
-                            <div class="${badgeColor} w-10 h-10 rounded-xl flex items-center justify-center font-black text-lg">
+                            <div class="${badgeColor} w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl">
                                 ${prizeIcon || (idx + 1)}
                             </div>
                             <div>
-                                <h4 class="font-extrabold text-slate-800 text-base">${player.name} さん</h4>
+                                <h4 class="font-black text-slate-800 text-lg md:text-xl">${player.name} さん</h4>
                                 <p class="text-xs text-slate-400">最終順位: ${idx + 1}位</p>
                             </div>
                         </div>
                         <div class="text-right">
                             <span class="text-xs text-slate-400 block">総合得点</span>
-                            <span class="font-black text-indigo-600 text-2xl">${player.score} <span class="text-xs text-slate-400 font-bold">点</span></span>
+                            <span class="font-black text-indigo-600 text-3xl">${player.score} <span class="text-sm text-slate-400 font-bold">点</span></span>
                         </div>
                     </div>
                 `;
